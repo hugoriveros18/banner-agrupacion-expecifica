@@ -1,0 +1,17 @@
+{
+  "minibanner-pdp": {
+    "component": "ProductPageMinibanner",
+    "render": "client",
+    "allowed": "*"
+  },
+  "banner-plp-desktop": {
+    "component": "SearchResultBannerDesktop",
+    "render": "client",
+    "allowed": "*"
+  },
+  "banner-plp-mobile": {
+    "component": "SearchResultBannerMobile",
+    "render": "client",
+    "allowed": "*"
+  }
+}

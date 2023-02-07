@@ -1,0 +1,107 @@
+.pdp-minibanner__imagen-container,
+.pdp-minibanner__imagen-container img,
+.pdp-minibanner__texto-container {
+  width: 100%;
+}
+
+.pdp-minibanner__texto-container {
+  display         : flex;
+  justify-content : flex-start;
+  align-items     : center;
+  padding         : 14px;
+  background-color: #ffffff;
+  margin          : 12px 0px 0px;
+  text-decoration: none;
+}
+
+.pdp-minibanner__texto-container p,
+.pdp-minibanner__texto-container p span {
+  margin     : 0;
+  font-family: 'Lato', sans-serif;
+  font-size  : 14px;
+  color      : #f77c08;
+}
+
+.pdp-minibanner__texto-container p {
+  font-weight: 700;
+}
+
+.pdp-minibanner__texto-container p span {
+  font-weight    : 900;
+  text-transform : uppercase;
+  text-decoration: underline;
+  margin-left    : 2px;
+}
+
+
+@media screen and (min-width: 425px) {
+
+
+  .pdp-minibanner__texto-container p,
+  .pdp-minibanner__texto-container p span {
+    font-size  : 16px;
+  }
+}
+
+@media screen and (min-width: 640px) {
+
+  .pdp-minibanner__texto-container {
+    justify-content : center;
+  }
+
+  .pdp-minibanner__texto-container p,
+  .pdp-minibanner__texto-container p span {
+    font-size  : 18px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+
+  .pdp-minibanner__texto-container {
+    justify-content : flex-start;
+    margin          : 12px 0px;
+  }
+
+
+  .pdp-minibanner__texto-container p,
+  .pdp-minibanner__texto-container p span {
+    font-size  : 11px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+
+  .pdp-minibanner__texto-container:hover {
+    -webkit-box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.85);
+    -moz-box-shadow   : 0px 0px 3px 0px rgba(0, 0, 0, 0.85);
+    box-shadow        : 0px 0px 3px 0px rgba(0, 0, 0, 0.85);
+  }
+  
+  .pdp-minibanner__texto-container p,
+  .pdp-minibanner__texto-container p span {
+    font-size  : 14px;
+  }
+
+}
+
+@media screen and (min-width: 1360px) {
+
+  .pdp-minibanner__texto-container p,
+  .pdp-minibanner__texto-container p span {
+    font-size  : 19px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+
+  .pdp-minibanner__texto-container {
+    cursor          : pointer;
+    transition: all 100ms ease-in-out;
+  }
+
+  .pdp-minibanner__texto-container:hover {
+    -webkit-box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.85);
+    -moz-box-shadow   : 0px 0px 3px 0px rgba(0, 0, 0, 0.85);
+    box-shadow        : 0px 0px 3px 0px rgba(0, 0, 0, 0.85);
+  }
+}

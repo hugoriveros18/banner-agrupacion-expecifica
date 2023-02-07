@@ -1,0 +1,12 @@
+.banner-busqueda__general-container,
+.banner-busqueda__general-container img {
+  width: 100%;
+}
+
+.banner-busqueda__general-container {
+  margin-bottom: 15px;
+}
+
+.banner-busqueda__null-container {
+  padding-top: 40px;
+}
