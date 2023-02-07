@@ -4,7 +4,7 @@ import { useDevice } from 'vtex.device-detector'
 import CSS_HANDLES from "../../typings/cssHandles";
 import { SearchResultMobileBannerSchema } from "../../schema/bannersSchema";
 import useConfigValidation from "../../hooks/useConfigValidation";
-import './styles.css';
+import '../SearchResultBannerDesktop/styles.css';
 
 const SearchResultBannerMobile = ({configuracionesBanner}:SearchResultBannerProps) => {
 
