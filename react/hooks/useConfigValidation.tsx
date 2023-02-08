@@ -59,7 +59,6 @@ const useConfigValidation = (inputconfiguracionesBanner:SearchResultBanner[]) =>
       for (let config of inputconfiguracionesBanner) {
         const idConfig = config.idAgrupacion.split("-");
         if(config.tipoAgrupacion === 'departamento') {
-          console.log("validando dep")
           //Validacion departamentos
           if(departamentosBusqueda.length > 0) {
             for (let depId of departamentosBusqueda) {

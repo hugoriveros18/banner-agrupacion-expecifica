@@ -41,6 +41,8 @@ const ProductPageMinibanner = ({listaDeSku}:ProductPageMinibannerProps) => {
       if(informacionSku.content.tipoBanner === 'Imagen') {
         return(
           <a
+            target="_blank"
+            rel="noreferrer noopener"
             href={informacionSku.urlRedireccion}
             className={`${handles['pdp-minibanner__imagen-container']}`}
           >
@@ -50,10 +52,12 @@ const ProductPageMinibanner = ({listaDeSku}:ProductPageMinibannerProps) => {
       }
       return(
         <a
+          target="_blank"
+          rel="noreferrer noopener"
           href={informacionSku.urlRedireccion}
           className={`${handles['pdp-minibanner__texto-container']}`}
         >
-            <p>{informacionSku.content.TextoMinibanner}<span>AQUI</span></p>
+            <p>{informacionSku.content.TextoMinibanner}<span>AQUÍ</span></p>
         </a>
       )
     }
@@ -63,6 +67,8 @@ const ProductPageMinibanner = ({listaDeSku}:ProductPageMinibannerProps) => {
         return(
           <a
             href={informacionSku.urlRedireccion}
+            target="_blank"
+            rel="noreferrer noopener"
             className={`${handles['pdp-minibanner__imagen-container']}`}
           >
             <img alt={informacionSku.tituloBanner} src={informacionSku.content.ImagenMinibanner}/>
@@ -71,15 +77,17 @@ const ProductPageMinibanner = ({listaDeSku}:ProductPageMinibannerProps) => {
       }
       return(
         <a
+          target="_blank"
+          rel="noreferrer noopener"
           href={informacionSku.urlRedireccion}
           className={`${handles['pdp-minibanner__texto-container']}`}
         >
-            <p>{informacionSku.content.TextoMinibanner}<span>AQUI</span></p>
+            <p>{informacionSku.content.TextoMinibanner}<span>AQUÍ</span></p>
         </a>
       )
     }
   }
-  
+
   return null;
 }
 
