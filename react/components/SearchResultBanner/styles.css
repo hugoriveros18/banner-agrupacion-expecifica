@@ -8,5 +8,11 @@
 }
 
 .banner-busqueda__null-container {
-  padding-top: 40px;
+  padding-top: 0px;
+}
+
+@media screen and (min-width: 1026px) {
+  .banner-busqueda__null-container {
+    padding-top: 40px;
+  }
 }

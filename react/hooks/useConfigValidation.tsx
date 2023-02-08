@@ -7,14 +7,6 @@ const useConfigValidation = (inputconfiguracionesBanner:SearchResultBanner[]) =>
   //SEARCH RESULT CONTEXT
   const searchPageContext = useSearchPage();
 
-  console.log(searchPageContext)
-  console.log(inputconfiguracionesBanner)
-
-  //2002029 - UBISOFT
-  //2003117 - TROPI
-  //0.5rem - PHONE
-  //1rem - min-640px - padding-top: 0.5rem
-
   //ESTADOS
   const [departamentosBusqueda, setDepartamentosBusqueda] = useState<string[]>([]);
   const [categoriasBusqueda, setCategoriasBusqueda] = useState<string[]>([]);
@@ -25,36 +17,40 @@ const useConfigValidation = (inputconfiguracionesBanner:SearchResultBanner[]) =>
   const [configuracionResultadoBusqueda, setConfiguracionResultadoBusqueda] = useState<SearchResultBanner | null>(null);
 
   //EFECTOS
+
   useEffect(() => {
-    setSubcategorias4Busqueda([]);
-    searchPageContext.filters.forEach((fil:any) => {
-      const facetsId = fil.facets.map((facet:any) => facet.id);
-      switch(fil.key) {
-        case "category-1":
-          setDepartamentosBusqueda(facetsId);
-          break;
-        case "category-2":
-          setCategoriasBusqueda(facetsId);
-          break;
-        case "category-3":
-          setSubcategoriasBusqueda(facetsId);
-          break;
-        case "category-4":
-          setSubcategorias4Busqueda(facetsId);
-          break;
-        case "brand":
-          setMarcasBusqueda(facetsId);
-          break;
-      }
-    })
-
-    let colectionIdToAdd:string[] = [];
-
-    searchPageContext.searchQuery.products.forEach((product:any) => {
-      const productClustersId = product.productClusters.map((productCluster:any) => productCluster.id);
-      colectionIdToAdd = [...colectionIdToAdd,...productClustersId]
-    })
-    setColeccionesBusqueda(Array.from(new Set(colectionIdToAdd)));
+    if(inputconfiguracionesBanner) {
+      setDepartamentosBusqueda([]);
+      setCategoriasBusqueda([]);
+      setSubcategoriasBusqueda([]);
+      setSubcategorias4Busqueda([]);
+      setMarcasBusqueda([]);
+      setColeccionesBusqueda([]);
+      searchPageContext.searchQuery.facets.specificationFilters.forEach((fil:any) => {
+        const facetsId = fil.facets.map((facet:any) => facet.id);
+        const facetsIdColeccion = fil.facets.map((facet:any) => facet.name);
+        switch(fil.name) {
+          case "Departamento":
+            setDepartamentosBusqueda(facetsId);
+            break;
+          case "Categoría":
+            setCategoriasBusqueda(facetsId);
+            break;
+          case "Sub-Categoría":
+            setSubcategoriasBusqueda(facetsId);
+            break;
+          case "Category 4":
+            setSubcategorias4Busqueda(facetsId);
+            break;
+          case "Marca":
+            setMarcasBusqueda(facetsId);
+            break;
+          case "ProductClusterIds":
+            setColeccionesBusqueda(facetsIdColeccion);
+            break;
+        }
+      })
+    }
   },[searchPageContext])
 
   useEffect(() => {
@@ -62,7 +58,8 @@ const useConfigValidation = (inputconfiguracionesBanner:SearchResultBanner[]) =>
     if(inputconfiguracionesBanner) {
       for (let config of inputconfiguracionesBanner) {
         const idConfig = config.idAgrupacion.split("-");
-        if(config.tipoAgrupacion === 'Departamento') {
+        if(config.tipoAgrupacion === 'departamento') {
+          console.log("validando dep")
           //Validacion departamentos
           if(departamentosBusqueda.length > 0) {
             for (let depId of departamentosBusqueda) {
@@ -72,7 +69,7 @@ const useConfigValidation = (inputconfiguracionesBanner:SearchResultBanner[]) =>
               }
             }
           }
-        } else if (config.tipoAgrupacion === 'Categoria') {
+        } else if (config.tipoAgrupacion === 'categoria') {
           //Validacion categorias
           if(categoriasBusqueda.length > 0) {
             for (let categId of categoriasBusqueda) {
@@ -82,7 +79,7 @@ const useConfigValidation = (inputconfiguracionesBanner:SearchResultBanner[]) =>
               }
             }
           }
-        } else if (config.tipoAgrupacion === 'SubCategoria') {
+        } else if (config.tipoAgrupacion === 'subcategoria') {
           //Validacion subcategorias
           if(subcategoriasBusqueda.length > 0) {
             for (let subcategId of subcategoriasBusqueda) {
@@ -100,7 +97,7 @@ const useConfigValidation = (inputconfiguracionesBanner:SearchResultBanner[]) =>
               }
             }
           }
-        } else if (config.tipoAgrupacion === 'Marca') {
+        } else if (config.tipoAgrupacion === 'marca') {
           //Validacion marcas
           if(marcasBusqueda.length > 0) {
             for (let marcaId of marcasBusqueda) {
@@ -113,10 +110,9 @@ const useConfigValidation = (inputconfiguracionesBanner:SearchResultBanner[]) =>
         } else {
           //Validacion colecciones
           if(coleccionesBusqueda.length > 0) {
-            for (let coleccionId of coleccionesBusqueda) {
-              if(idConfig.includes(coleccionId)) {
+            for(let coleccion of coleccionesBusqueda) {
+              if(idConfig.includes(coleccion)) {
                 setConfiguracionResultadoBusqueda(config);
-                break;
               }
             }
           }
@@ -129,7 +125,8 @@ const useConfigValidation = (inputconfiguracionesBanner:SearchResultBanner[]) =>
     subcategoriasBusqueda,
     subcategorias4Busqueda,
     marcasBusqueda,
-    coleccionesBusqueda
+    coleccionesBusqueda,
+    inputconfiguracionesBanner
   ])
 
 

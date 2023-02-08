@@ -19,28 +19,17 @@ type ProductPageMinibannerProps = {
   listaDeSku: ProductPageMinibanner[]
 }
 
-type AgrupacionesDeBusqueda = 'Departamento' | 'Categoria' | 'SubCategoria' | 'Marca' | 'Coleccion'
-
-type ProgramarFechas = 'Si' | 'No'
-
-type CondicionalFechas = {
-  programarFechas: ProgramarFechas
-  fechaInicio: string
-  fechaFinal: string
-}
+type AgrupacionesDeBusqueda = 'departamento' | 'categoria' | 'subcategoria' | 'marca' | 'coleccion'
 
 type SearchResultBanner = {
   tituloBanner: string
-  imagenBannerDesktop?: string
-  imagenBannerTablet?: string
-  imagenBannerCelular?: string
-  urlRedireccion: string
   tipoAgrupacion: AgrupacionesDeBusqueda
   idAgrupacion: string
-  condicionalFechas: CondicionalFechas
+  imagenBannerDesktop: string
+  imagenBannerMobile: string
+  urlRedireccion: string
+  programarEntreFechas: boolean
+  fechaInicio: string
+  fechaFinal: string
   estaActivo: boolean
-}
-
-type SearchResultBannerProps = {
-  configuracionesBanner: SearchResultBanner[]
 }

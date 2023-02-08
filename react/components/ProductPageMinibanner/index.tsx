@@ -23,7 +23,6 @@ const ProductPageMinibanner = ({listaDeSku}:ProductPageMinibannerProps) => {
         const inputSkuId = sku.skuId.split("-");
         if(inputSkuId.includes(contexoProducto.selectedItem.itemId)) {
           setInformacionSku(sku);
-          console.log(sku.content.TextoMinibanner)
           return;
         }
       }
@@ -58,7 +57,6 @@ const ProductPageMinibanner = ({listaDeSku}:ProductPageMinibannerProps) => {
         </a>
       )
     }
-    return null
   } else {
     if(informacionSku && informacionSku.estaActivo) {
       if(informacionSku.content.tipoBanner === 'Imagen') {
@@ -80,8 +78,9 @@ const ProductPageMinibanner = ({listaDeSku}:ProductPageMinibannerProps) => {
         </a>
       )
     }
-    return null;
   }
+  
+  return null;
 }
 
 ProductPageMinibanner.schema = ProductPageMinibannerSchema;
