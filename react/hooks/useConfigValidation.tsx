@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useSearchPage } from 'vtex.search-page-context/SearchPageContext';
 
 
-const useConfigValidation = (inputconfiguracionesBanner:SearchResultBanner[]) => {
+const useConfigValidation = (inputconfiguracionesBanner:SearchResultBannerProps[]) => {
 
   //SEARCH RESULT CONTEXT
   const searchPageContext = useSearchPage();
@@ -14,7 +14,7 @@ const useConfigValidation = (inputconfiguracionesBanner:SearchResultBanner[]) =>
   const [subcategorias4Busqueda, setSubcategorias4Busqueda] = useState<string[]>([]);
   const [marcasBusqueda, setMarcasBusqueda] = useState<string[]>([]);
   const [coleccionesBusqueda, setColeccionesBusqueda] = useState<string[]>([]);
-  const [configuracionResultadoBusqueda, setConfiguracionResultadoBusqueda] = useState<SearchResultBanner | null>(null);
+  const [configuracionResultadoBusqueda, setConfiguracionResultadoBusqueda] = useState<SearchResultBannerProps | null>(null);
 
   //EFECTOS
 
@@ -28,7 +28,6 @@ const useConfigValidation = (inputconfiguracionesBanner:SearchResultBanner[]) =>
       setColeccionesBusqueda([]);
       searchPageContext.searchQuery.facets.specificationFilters.forEach((fil:any) => {
         const facetsId = fil.facets.map((facet:any) => facet.id);
-        const facetsIdColeccion = fil.facets.map((facet:any) => facet.name);
         switch(fil.name) {
           case "Departamento":
             setDepartamentosBusqueda(facetsId);
@@ -46,7 +45,10 @@ const useConfigValidation = (inputconfiguracionesBanner:SearchResultBanner[]) =>
             setMarcasBusqueda(facetsId);
             break;
           case "ProductClusterIds":
-            setColeccionesBusqueda(facetsIdColeccion);
+            setColeccionesBusqueda(facetsId);
+            break;
+          case "productClusterNames":
+            setColeccionesBusqueda(facetsId);
             break;
         }
       })

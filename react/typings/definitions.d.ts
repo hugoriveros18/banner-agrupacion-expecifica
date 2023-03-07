@@ -21,7 +21,7 @@ type ProductPageMinibannerProps = {
 
 type AgrupacionesDeBusqueda = 'departamento' | 'categoria' | 'subcategoria' | 'marca' | 'coleccion'
 
-type SearchResultBanner = {
+type SearchResultBannerProps = {
   tituloBanner: string
   tipoAgrupacion: AgrupacionesDeBusqueda
   idAgrupacion: string

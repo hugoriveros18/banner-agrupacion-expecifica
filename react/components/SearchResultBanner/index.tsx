@@ -8,7 +8,7 @@ import './styles.css';
 const SearchResultBanner = () => {
 
   //ESTADOS
-  const [configuracionesBanner, setConfiguracionesBanner] = useState<SearchResultBanner[]>([]);
+  const [configuracionesBanner, setConfiguracionesBanner] = useState<SearchResultBannerProps[]>([]);
 
   //DEVICE DETECTOR
   const { device } = useDevice();
