@@ -8,6 +8,11 @@ const ProductPageMinibannerSchema = {
       type: "array",
       items: {
         properties: {
+          __editorItemTitle: {
+            title: "Identificador Banner",
+            type: "string",
+            default: ""
+          },
           tituloBanner: {
             title: "Titulo de Banner",
             type: "string"
