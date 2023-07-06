@@ -6,8 +6,11 @@ type Content = {
   TextoMinibanner?: string
 }
 
+type TipoValidacion = 'Sku' | 'Coleccion'
+
 type ProductPageMinibanner = {
   tituloBanner: string
+  tipoValidacion: TipoValidacion
   skuId: string
   content: Content
   urlRedireccion: string

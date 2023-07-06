@@ -19,17 +19,26 @@ const ProductPageMinibanner = ({listaDeSku}:ProductPageMinibannerProps) => {
   //EFECTOS
   useEffect(() => {
     if(listaDeSku) {
-      for(let sku of listaDeSku) {
-        const inputSkuId = sku.skuId.split("-");
-        if(inputSkuId.includes(contexoProducto.selectedItem.itemId)) {
-          setInformacionSku(sku);
-          return;
+      for(let campaña of listaDeSku) {
+        const idsCampaña = campaña.skuId.split(',');
+        if(campaña.tipoValidacion === 'Sku') {
+          if(idsCampaña.includes(contexoProducto.selectedItem.itemId)) {
+            setInformacionSku(campaña);
+            return;
+          }
+        } else {
+          const productClustersIds = contexoProducto.product.productClusters.map ((prod:any) => prod.id);
+          for(let id of productClustersIds) {
+            if(idsCampaña.includes(id)) {
+              setInformacionSku(campaña);
+              return;
+            }
+          }
         }
       }
-      setInformacionSku(null);
-    } else {
-      setInformacionSku(null);
     }
+
+    setInformacionSku(null);
   },[contexoProducto])
 
   //JSX

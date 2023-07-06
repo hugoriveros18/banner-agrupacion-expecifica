@@ -4,7 +4,7 @@ const ProductPageMinibannerSchema = {
   type: "object",
   properties: {
     listaDeSku: {
-      title: "Lista de Sku's",
+      title: "Lista de Campañas",
       type: "array",
       items: {
         properties: {
@@ -17,8 +17,18 @@ const ProductPageMinibannerSchema = {
             title: "Titulo de Banner",
             type: "string"
           },
+          tipoValidacion: {
+            title: "Tipo de Validación",
+            type: "string",
+            enum: [
+              'Sku',
+              'Coleccion'
+            ],
+            default: 'Coleccion'
+          },
           skuId: {
-            title: "SkuId del producto",
+            title: "Identificador de Validacion",
+            description: "Indique el ID del tipo de validacipon seleccionada. Para indicar mas de uno separar por comas (','), ej. 125,168",
             type: "string",
             default: '',
             widget: {
